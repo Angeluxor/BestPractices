@@ -17,7 +17,8 @@ public final class CsvUtils {
 
     public static List<Map<String, String>> getDataCsv(String csvName) throws IOException {
         List<Map<String, String>> dataList = new ArrayList<>();
-        File file = new File("C:\\Users\\idmig\\IdeaProjects\\BestPractices\\src\\main\\resources\\data_songs.csv");
+        File file = new File("src/main/resources/data_songs.csv");
+
         InputStream in = new FileInputStream(file);
         Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
         Iterator<Map<String, String>> iterator =

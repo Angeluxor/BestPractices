@@ -3,6 +3,7 @@ package com.sofka;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Song {
 
@@ -49,6 +50,7 @@ public class Song {
         }
         return songList;
     }
+
 
     public String getTitle() {
         return title;
@@ -118,4 +120,7 @@ public class Song {
                 ", summary='" + summary + '\'' +
                 '}';
     }
+
+
+
 }
