@@ -3,12 +3,12 @@ package com.sofka;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Song {
 
-    private String title;
+
     private String id;
+    private String title;
     private String date;
     private String length;
     private String gender;
@@ -16,15 +16,15 @@ public class Song {
     private String summary;
 
     public Song(
-            String title,
             String id,
+            String title,
             String date,
             String length,
             String gender,
             String cover,
             String summary) {
-        this.title = title;
         this.id = id;
+        this.title = title;
         this.date = date;
         this.length = length;
         this.gender = gender;
@@ -40,8 +40,8 @@ public class Song {
         for (Map<String, String> song : dataSongs) {
             songList.add(
                     new Song(
-                            song.get("Title"),
                             song.get("Id"),
+                            song.get("Title"),
                             song.get("Date"),
                             song.get("Length"),
                             song.get("Gender"),
@@ -110,17 +110,15 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song{" +
-                "title='" + title + '\'' +
-                ", id='" + id + '\'' +
-                ", date='" + date + '\'' +
-                ", length='" + length + '\'' +
-                ", gender='" + gender + '\'' +
-                ", cover='" + cover + '\'' +
-                ", summary='" + summary + '\'' +
-                '}';
+        return "Id = " + id + '\n' +
+                "Title = " + title + '\n' +
+                "Date = " + date + '\n' +
+                "Length = " + length + '\n' +
+                "Genre = " + gender + '\n' +
+                "Cover = " + cover + '\n' +
+                "Summary = " + summary + '\n' +
+                "\n";
     }
-
 
 
 }
