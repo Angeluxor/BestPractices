@@ -1,21 +1,32 @@
 package com.sofka;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.sofka.Playlist.createNewPlaylist;
 import static com.sofka.Playlist.getPlaylistCollection;
-import static com.sofka.Song.getSongList;
 
-public class GetSongsData {
+/**
+ * Representa una librería de música y sus comportamientos
+ */
 
-    static List<Song> songsList;
+public class Library {
+
+    /**
+     * Lista de canciones almacenada en una librería
+     */
+    private static List<Song> songsList;
+
+    /**
+     * Método principal que inicia la librería y ofrece el menú al usuario en consola
+     *
+     * @param args
+     * @throws IOException
+     */
 
     public static void main(String[] args) throws IOException {
-        getSongData();
+        SongData();
         menu();
         System.out.println("""
                          
@@ -24,6 +35,10 @@ public class GetSongsData {
                 """);
 
     }
+
+    /**
+     * Muestra al usuario en consola un menú de opciones que le permite interactuar con la librería y acceder a sus comportamientos
+     */
 
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
@@ -47,6 +62,8 @@ public class GetSongsData {
                 case 2 -> createNewPlaylist();
                 case 3 -> genderFilter();
                 case 4 -> yearFilter();
+                case 5 -> lengthSort();
+                case 6 -> yearSort();
                 case 7 -> {
                     List<Playlist> playlistCollection = getPlaylistCollection();
                     playlistCollection.forEach(System.out::println);
@@ -57,6 +74,10 @@ public class GetSongsData {
 
         }
     }
+
+    /**
+     * Filtra las canciones de la librería por género según la selección del usuario
+     */
 
     private static void genderFilter() {
         Scanner scanner = new Scanner(System.in);
@@ -73,25 +94,25 @@ public class GetSongsData {
         switch (option2) {
             case 1 -> {
                 List<Song> filteredList1 = songsList.stream()
-                        .filter(Song -> Song.getGender().equals("Rock"))
+                        .filter(Song -> "Rock".equals(Song.getGender()))
                         .collect(Collectors.toList());
                 System.out.println(filteredList1);
             }
             case 2 -> {
                 List<Song> filteredList2 = songsList.stream()
-                        .filter(Song -> Song.getGender().equals("Cantautor"))
+                        .filter(Song -> "Cantautor".equals(Song.getGender()))
                         .collect(Collectors.toList());
                 System.out.println(filteredList2);
             }
             case 3 -> {
                 List<Song> filteredList3 = songsList.stream()
-                        .filter(Song -> Song.getGender().equals("Bolero"))
+                        .filter(Song -> "Bolero".equals(Song.getGender()))
                         .collect(Collectors.toList());
                 System.out.println(filteredList3);
             }
             case 4 -> {
                 List<Song> filteredList4 = songsList.stream()
-                        .filter(Song -> Song.getGender().equals("Rap"))
+                        .filter(Song -> "Rap".equals(Song.getGender()))
                         .collect(Collectors.toList());
                 System.out.println(filteredList4);
             }
@@ -99,13 +120,18 @@ public class GetSongsData {
             default -> System.out.println("Sorry at the moment only the options between 1 and 5 are available");
         }
     }
+
+    /**
+     * Filtra las canciones de la librería por año según el valor introducido por el usuario
+     */
+
     private static void yearFilter() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 The next options are available:
                 1. Filter by your desired year\040
                 2. Go back to the menu
-                
+                                
                 """);
         int option3 = scanner.nextInt();
         scanner.nextLine();
@@ -125,11 +151,92 @@ public class GetSongsData {
         }
     }
 
+    /**
+     * Ordena las canciones por su duración de manera ascendente o descendente
+     */
 
-    private static void getSongData() throws IOException {
+    private static void lengthSort() {
+        sorter(Comparator.comparing(Song::getLength));
+
+    }
+
+    /**
+     * Ordena las canciones por su año de lanzamiento de manera ascendente o descendente
+     */
+
+    private static void yearSort() {
+        sorter(Comparator.comparing(Song::getDate));
+
+    }
+
+    /**
+     * Muestra al usuario las posibilidades de ordenamiento y llama al método apropiado según el caso
+     *
+     * @param comparing Comparador que establece el tipo de ordenamiento que se va a realizar
+     */
+
+    private static void sorter(Comparator<Song> comparing) {
+        int option;
+        List<Song> orderedSongList;
+        orderedSongList = songsList;
+        System.out.println("""
+                Please select the order that you want:
+                1. Ascending
+                2. Descending
+                """);
+        Scanner scanner = new Scanner(System.in);
+        option = scanner.nextInt();
+        switch (option) {
+            case 1 -> {
+                orderedSongList.sort(comparing);
+                System.out.println(orderedSongList);
+            }
+
+            case 2 -> {
+                orderedSongList.sort(comparing.reversed());
+                System.out.println(orderedSongList);
+            }
+
+            default -> System.out.println("Sorry at the moment only the options between 1 and 2 are available");
+
+        }
+    }
+
+    /**
+     * Crea las instancias necesarias de la clase Song a partir del mapa obtenido del archivo csv
+     *
+     * @param dataSongs Mapa de dos objetos de tipo String obtenido a partir de un archivo csv
+     * @return Una lista de objetos de tipo Song
+     */
+
+    public static List<Song> getSongList(List<Map<String, String>> dataSongs) {
+        List<Song> songList = new ArrayList<>();
+        for (Map<String, String> song : dataSongs) {
+            songList.add(
+                    new Song(
+                            song.get("Id"),
+                            song.get("Title"),
+                            song.get("Date"),
+                            song.get("Length"),
+                            song.get("Gender"),
+                            song.get("Cover"),
+                            song.get("Summary")));
+        }
+        return songList;
+    }
+
+    /**
+     * Llama los métodos necesarios para la lectura del archivo csv, su almacenamiento en un mapa y posterior conversión a lista
+     *
+     * @throws IOException
+     */
+
+
+    private static void SongData() throws IOException {
         List<Map<String, String>> dataList = CsvUtils.getDataCsv("songs");
         songsList = getSongList(dataList);
     }
+
 
     public static List<Song> getSongsList() {
         return songsList;

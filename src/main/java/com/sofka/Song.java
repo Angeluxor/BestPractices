@@ -1,20 +1,51 @@
 package com.sofka;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+/**
+ * Representa una canción y sus comportamientos
+ */
 
 public class Song {
 
-
+    /**
+     * Identificación numérica de una canción
+     */
     private String id;
+    /**
+     * Título de una canción
+     */
     private String title;
+    /**
+     * Año de lanzamiento de una canción
+     */
     private String date;
+    /**
+     * Duración de una canción
+     */
     private String length;
+    /**
+     * Género de una canción
+     */
     private String gender;
+    /**
+     * Portada de una canción
+     */
     private String cover;
+    /**
+     * Descripción de una canción
+     */
     private String summary;
 
+    /**
+     * Crea una instancia de la clase Song
+     *
+     * @param id      Identificación numérica de una canción
+     * @param title   Título de una canción
+     * @param date    Año de lanzamiento de una canción
+     * @param length  Duración de una canción
+     * @param gender  Género de una canción
+     * @param cover   Portada de una canción
+     * @param summary Descripción de una canción
+     */
     public Song(
             String id,
             String title,
@@ -32,23 +63,11 @@ public class Song {
         this.summary = summary;
     }
 
-    public Song() {
-    }
+    /**
+     * Crea una instancia de la clase Song
+     */
 
-    public static List<Song> getSongList(List<Map<String, String>> dataSongs) {
-        List<Song> songList = new ArrayList<>();
-        for (Map<String, String> song : dataSongs) {
-            songList.add(
-                    new Song(
-                            song.get("Id"),
-                            song.get("Title"),
-                            song.get("Date"),
-                            song.get("Length"),
-                            song.get("Gender"),
-                            song.get("Cover"),
-                            song.get("Summary")));
-        }
-        return songList;
+    public Song() {
     }
 
 

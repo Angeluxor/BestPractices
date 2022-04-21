@@ -4,27 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.sofka.GetSongsData.getSongsList;
-import static com.sofka.GetSongsData.menu;
+import static com.sofka.Library.getSongsList;
+import static com.sofka.Library.menu;
+
+/**
+ * Representa una playlist de música y sus comportamientos
+ */
 
 public class Playlist {
+    /**
+     * Almacena los objetos de tipo Playlist creados
+     */
     private static final List<Playlist> playlistCollection = new ArrayList<>();
+    /**
+     * Almacena los objetos de tipo Song que contiene un objeto de tipo Playlist
+     */
     private static List<Song> songs = new ArrayList<>();
+    /**
+     * Almacena el nombre de un objeto de tipo Playlist
+     */
     private static String name;
+
+    /**
+     * Crea una instancia de la clase Playlist
+     *
+     * @param songs Lista de objetos de tipo Song que se almacenarán
+     * @param name  Nombre de la Playlist
+     */
 
     public Playlist(List<Song> songs, String name) {
         Playlist.songs = songs;
         Playlist.name = name;
     }
 
+    /**
+     * Crea una instancia vacía de la clase Playlist
+     */
+
     public Playlist() {
+
     }
+
+    /**
+     * Permite al usuario la creación de un objeto de tipo Playlist a través de la consola
+     *
+     * @return Objeto de tipo Playlist creado por el usuario
+     */
 
     public static Playlist createNewPlaylist() {
 
         int choice;
         String name;
-        int id;
+
         while (true) {
             try {
                 Scanner scanner = new Scanner(System.in);
@@ -33,7 +64,7 @@ public class Playlist {
                         1. Yes
                         2. No
                         """);
-                choice = (Integer.parseInt(scanner.nextLine()));
+                choice = Integer.parseInt(scanner.nextLine());
                 if (choice == 1) {
                     System.out.println("Please type a name for the new playlist");
                     name = scanner.nextLine();
@@ -55,10 +86,14 @@ public class Playlist {
 
     }
 
+    /**
+     * Permite al usuario añadir un objeto de tipo Song a una Playlist a través de su ID
+     */
+
     public static void addSong() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please type the Id of the song that you want to add");
-        int id = (Integer.parseInt(scanner.nextLine()));
+        int id = Integer.parseInt(scanner.nextLine());
         id = id - 1;
         Song song = getSongsList().get(id);
         songs.add(song);
@@ -67,7 +102,7 @@ public class Playlist {
                 1. Yes
                 2. No
                 """);
-        int choice = (Integer.parseInt(scanner.nextLine()));
+        int choice = Integer.parseInt(scanner.nextLine());
         if (choice == 1) {
             addSong();
         } else if (choice == 2) {
