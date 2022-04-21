@@ -56,20 +56,25 @@ public class Library {
                     7. Show playlists
                     8. Exit
                     """);
-            option = scanner.nextInt();
-            switch (option) {
-                case 1 -> songsList.forEach(System.out::println);
-                case 2 -> createNewPlaylist();
-                case 3 -> genderFilter();
-                case 4 -> yearFilter();
-                case 5 -> lengthSort();
-                case 6 -> yearSort();
-                case 7 -> {
-                    List<Playlist> playlistCollection = getPlaylistCollection();
-                    playlistCollection.forEach(System.out::println);
+            try {
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1 -> songsList.forEach(System.out::println);
+                    case 2 -> createNewPlaylist();
+                    case 3 -> genderFilter();
+                    case 4 -> yearFilter();
+                    case 5 -> lengthSort();
+                    case 6 -> yearSort();
+                    case 7 -> {
+                        List<Playlist> playlistCollection = getPlaylistCollection();
+                        playlistCollection.forEach(System.out::println);
+                    }
+                    case 8 -> exit = true;
+                    default -> System.out.println("Sorry at the moment only the options between 1 and 7 are available");
                 }
-                case 8 -> exit = true;
-                default -> System.out.println("Sorry at the moment only the options between 1 and 7 are available");
+            } catch (InputMismatchException e) {
+                System.out.println("You must enter a number");
+                scanner.next();
             }
 
         }
@@ -89,35 +94,40 @@ public class Library {
                 4. Rap
                 5. Back
                 """);
-        int option2 = scanner.nextInt();
-        scanner.nextLine();
-        switch (option2) {
-            case 1 -> {
-                List<Song> filteredList1 = songsList.stream()
-                        .filter(Song -> "Rock".equals(Song.getGender()))
-                        .collect(Collectors.toList());
-                System.out.println(filteredList1);
+        try {
+            int option2 = scanner.nextInt();
+            scanner.nextLine();
+            switch (option2) {
+                case 1 -> {
+                    List<Song> filteredList1 = songsList.stream()
+                            .filter(Song -> "Rock".equals(Song.getGender()))
+                            .collect(Collectors.toList());
+                    System.out.println(filteredList1);
+                }
+                case 2 -> {
+                    List<Song> filteredList2 = songsList.stream()
+                            .filter(Song -> "Cantautor".equals(Song.getGender()))
+                            .collect(Collectors.toList());
+                    System.out.println(filteredList2);
+                }
+                case 3 -> {
+                    List<Song> filteredList3 = songsList.stream()
+                            .filter(Song -> "Bolero".equals(Song.getGender()))
+                            .collect(Collectors.toList());
+                    System.out.println(filteredList3);
+                }
+                case 4 -> {
+                    List<Song> filteredList4 = songsList.stream()
+                            .filter(Song -> "Rap".equals(Song.getGender()))
+                            .collect(Collectors.toList());
+                    System.out.println(filteredList4);
+                }
+                case 5 -> menu();
+                default -> System.out.println("Sorry at the moment only the options between 1 and 5 are available");
             }
-            case 2 -> {
-                List<Song> filteredList2 = songsList.stream()
-                        .filter(Song -> "Cantautor".equals(Song.getGender()))
-                        .collect(Collectors.toList());
-                System.out.println(filteredList2);
-            }
-            case 3 -> {
-                List<Song> filteredList3 = songsList.stream()
-                        .filter(Song -> "Bolero".equals(Song.getGender()))
-                        .collect(Collectors.toList());
-                System.out.println(filteredList3);
-            }
-            case 4 -> {
-                List<Song> filteredList4 = songsList.stream()
-                        .filter(Song -> "Rap".equals(Song.getGender()))
-                        .collect(Collectors.toList());
-                System.out.println(filteredList4);
-            }
-            case 5 -> menu();
-            default -> System.out.println("Sorry at the moment only the options between 1 and 5 are available");
+        } catch (InputMismatchException e) {
+            System.out.println("You must enter a number");
+            scanner.next();
         }
     }
 
@@ -133,21 +143,26 @@ public class Library {
                 2. Go back to the menu
                                 
                 """);
-        int option3 = scanner.nextInt();
-        scanner.nextLine();
-        switch (option3) {
-            case 1 -> {
-                System.out.println("Type the year you want to filter");
-                String year = scanner.next();
+        try {
+            int option3 = scanner.nextInt();
+            scanner.nextLine();
+            switch (option3) {
+                case 1 -> {
+                    System.out.println("Type the year you want to filter");
+                    String year = scanner.next();
 
-                List<Song> yearFilter = songsList.stream()
-                        .filter(Song -> Song.getDate().equals(year))
-                        .collect(Collectors.toList());
-                System.out.println(yearFilter);
+                    List<Song> yearFilter = songsList.stream()
+                            .filter(Song -> Song.getDate().equals(year))
+                            .collect(Collectors.toList());
+                    System.out.println(yearFilter);
+                }
+                case 2 -> menu();
+
+                default -> System.out.println("Sorry at the moment only the options between 1 and 2 are available");
             }
-            case 2 -> menu();
-
-            default -> System.out.println("Sorry at the moment only the options between 1 and 2 are available");
+        } catch (InputMismatchException e) {
+            System.out.println("You must enter a number");
+            scanner.next();
         }
     }
 
@@ -185,20 +200,26 @@ public class Library {
                 2. Descending
                 """);
         Scanner scanner = new Scanner(System.in);
-        option = scanner.nextInt();
-        switch (option) {
-            case 1 -> {
-                orderedSongList.sort(comparing);
-                System.out.println(orderedSongList);
+        try {
+
+            option = scanner.nextInt();
+            switch (option) {
+                case 1 -> {
+                    orderedSongList.sort(comparing);
+                    System.out.println(orderedSongList);
+                }
+
+                case 2 -> {
+                    orderedSongList.sort(comparing.reversed());
+                    System.out.println(orderedSongList);
+                }
+
+                default -> System.out.println("Sorry at the moment only the options between 1 and 2 are available");
+
             }
-
-            case 2 -> {
-                orderedSongList.sort(comparing.reversed());
-                System.out.println(orderedSongList);
-            }
-
-            default -> System.out.println("Sorry at the moment only the options between 1 and 2 are available");
-
+        } catch (InputMismatchException e) {
+            System.out.println("You must enter a number");
+            scanner.next();
         }
     }
 
