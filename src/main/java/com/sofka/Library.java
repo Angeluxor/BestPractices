@@ -7,8 +7,13 @@ import java.util.stream.Collectors;
 import static com.sofka.Playlist.createNewPlaylist;
 import static com.sofka.Playlist.getPlaylistCollection;
 
-/**
+/** Library
  * Representa una librería de música y sus comportamientos
+ * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+ * *               la misma ha sufrido 0 refactorings durante la versión
+ * *               se realizaron 0 cambios menores
+ * *
+ * @since 01.00.00 2022-04-22
  */
 
 public class Library {
@@ -23,6 +28,11 @@ public class Library {
      *
      * @param args
      * @throws IOException
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     public static void main(String[] args) throws IOException {
@@ -37,7 +47,12 @@ public class Library {
     }
 
     /**
-     * Muestra al usuario en consola un menú de opciones que le permite interactuar con la librería y acceder a sus comportamientos
+     * menu Muestra al usuario en consola un menú de opciones que le permite interactuar con la librería y acceder a sus comportamientos
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     public static void menu() {
@@ -81,7 +96,12 @@ public class Library {
     }
 
     /**
-     * Filtra las canciones de la librería por género según la selección del usuario
+     * genderFilter Filtra las canciones de la librería por género según la selección del usuario
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     private static void genderFilter() {
@@ -132,7 +152,12 @@ public class Library {
     }
 
     /**
-     * Filtra las canciones de la librería por año según el valor introducido por el usuario
+     * yearFilter Filtra las canciones de la librería por año según el valor introducido por el usuario
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     private static void yearFilter() {
@@ -167,7 +192,12 @@ public class Library {
     }
 
     /**
-     * Ordena las canciones por su duración de manera ascendente o descendente
+     * lengthSort Ordena las canciones por su duración de manera ascendente o descendente
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     private static void lengthSort() {
@@ -176,7 +206,12 @@ public class Library {
     }
 
     /**
-     * Ordena las canciones por su año de lanzamiento de manera ascendente o descendente
+     *  yearSort Ordena las canciones por su año de lanzamiento de manera ascendente o descendente
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     private static void yearSort() {
@@ -185,9 +220,14 @@ public class Library {
     }
 
     /**
-     * Muestra al usuario las posibilidades de ordenamiento y llama al método apropiado según el caso
+     * sorter Muestra al usuario las posibilidades de ordenamiento y llama al método apropiado según el caso
      *
      * @param comparing Comparador que establece el tipo de ordenamiento que se va a realizar
+     *                  @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     private static void sorter(Comparator<Song> comparing) {
@@ -224,10 +264,15 @@ public class Library {
     }
 
     /**
-     * Crea las instancias necesarias de la clase Song a partir del mapa obtenido del archivo csv
+     * getSongList Crea las instancias necesarias de la clase Song a partir del mapa obtenido del archivo csv
      *
      * @param dataSongs Mapa de dos objetos de tipo String obtenido a partir de un archivo csv
      * @return Una lista de objetos de tipo Song
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     public static List<Song> getSongList(List<Map<String, String>> dataSongs) {
@@ -247,9 +292,14 @@ public class Library {
     }
 
     /**
-     * Llama los métodos necesarios para la lectura del archivo csv, su almacenamiento en un mapa y posterior conversión a lista
+     * SongData Llama los métodos necesarios para la lectura del archivo csv, su almacenamiento en un mapa y posterior conversión a lista
      *
      * @throws IOException
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
 

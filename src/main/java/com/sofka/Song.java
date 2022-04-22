@@ -70,7 +70,21 @@ public class Song {
     public Song() {
     }
 
-
+    /**
+     *  estos son los getters y los setters de la clase song, estos respectivamente sirven para crear y obtener los valores de los atributos:
+     *  tittle
+     *  date
+     *  length
+     *  gender
+     *  cover
+     *  summary
+     *  @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
+     * @return retorna los valroes de los atributos anteriores
+     */
     public String getTitle() {
         return title;
     }

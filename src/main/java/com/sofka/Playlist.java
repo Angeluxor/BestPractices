@@ -7,26 +7,51 @@ import java.util.Scanner;
 import static com.sofka.Library.getSongsList;
 import static com.sofka.Library.menu;
 
-/**
+/** Playlist
  * Representa una playlist de música y sus comportamientos
+ * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+ * *               la misma ha sufrido 0 refactorings durante la versión
+ * *               se realizaron 0 cambios menores
+ * *
+ * @since 01.00.00 2022-04-22
  */
 
 public class Playlist {
-    /**
+    /** playlistCollection
      * Almacena los objetos de tipo Playlist creados
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
     private static final List<Playlist> playlistCollection = new ArrayList<>();
     /**
      * Almacena los objetos de tipo Song que contiene un objeto de tipo Playlist
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
     private static List<Song> songs = new ArrayList<>();
     /**
      * Almacena el nombre de un objeto de tipo Playlist
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
     private static String name;
 
     /**
      * Crea una instancia de la clase Playlist
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      *
      * @param songs Lista de objetos de tipo Song que se almacenarán
      * @param name  Nombre de la Playlist
@@ -39,6 +64,11 @@ public class Playlist {
 
     /**
      * Crea una instancia vacía de la clase Playlist
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     public Playlist() {
@@ -49,6 +79,11 @@ public class Playlist {
      * Permite al usuario la creación de un objeto de tipo Playlist a través de la consola
      *
      * @return Objeto de tipo Playlist creado por el usuario
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     public static Playlist createNewPlaylist() {
@@ -88,6 +123,11 @@ public class Playlist {
 
     /**
      * Permite al usuario añadir un objeto de tipo Song a una Playlist a través de su ID
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
      */
 
     public static void addSong() {
@@ -114,6 +154,15 @@ public class Playlist {
 
     }
 
+    /**
+     *
+     * @return songs retorna las canciones disponibles
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
+     */
     public static List<Song> getSongs() {
         return songs;
     }
@@ -122,6 +171,15 @@ public class Playlist {
         Playlist.songs = songs;
     }
 
+    /**
+     * getPlaylistCollection()
+     * @return retorna las playlist creadas por el usuario
+     * @version 01.00.00 2022-04-22, La clase corresponde a la versión 1 del sistema,
+     * *               la misma ha sufrido 0 refactorings durante la versión
+     * *               se realizaron 0 cambios menores
+     * *
+     * @since 01.00.00 2022-04-22
+     */
     public static List<Playlist> getPlaylistCollection() {
         return playlistCollection;
     }
